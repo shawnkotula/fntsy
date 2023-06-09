@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<script src="sprites.js" type="module"></script>
+<script src="game.js" type="module"></script>
+<head>
+    <title>Sprite Control</title>
+    <style>
+        #gameCanvas {
+            position: relative;
+            width: 800px;
+            height: 600px;
+            border: 1px solid black;
+        }
+
+        .spriteContainer {
+            position: absolute;
+            width: 75px;
+            height: 75px;
+            transition: top 2s, left 2s;
+        }
+
+        .sprite {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .healthBar {
+            position: absolute;
+            height: 10px;
+            background-color: red;
+            width: 100%;
+            top: -10px;
+        }
+
+        #buttonContainer {
+            position: absolute;
+            bottom: 20px;
+            width: 140px;
+            left: calc(50% - 70px);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #fireballButton,
+        #gustButton {
+            width: 60px;
+            height: 60px;
+        }
+
+        .fireball {
+            position: absolute;
+            width: 45px;
+            height: 45px;
+        }
+
+        .gust {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: url('gust.jpeg') no-repeat;
+            background-size: 100% 100%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="gameOverScreen" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); justify-content: center; align-items: center; color: white; font-size: 2em;">
+        YOU HAVE DIED,
+        <button onclick="respawn()">RESPAWN</button>
+    </div>
+    <div id="gameCanvas">
+        <div id="manContainer" class="manContainer spriteContainer">
+            <img id="man" class="man sprite" src="man.png">
+            <div id="manHealth" class="manHealth healthBar"></div>
+        </div>
+        <div class="man2Container spriteContainer">
+            <img class="man2 sprite" src="man2.png">
+            <div class="man2Health healthBar"></div>
+        </div>
+        <div id="buttonContainer">
+            <img id="gustButton" src="gust.jpeg" />
+            <img id="fireballButton" src="fireball.jpeg" />
+        </div>
+    </div>
+   
+</body>
+</html>
